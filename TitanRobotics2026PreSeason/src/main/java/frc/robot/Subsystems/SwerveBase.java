@@ -34,10 +34,14 @@ public class SwerveBase implements Subsystem {
     //
     // Function: SwerveBase
     //
-    // Use: This function configures the subsystem. It configures it's starting pose based on which allience it is on (set to red alliance by
-    // default because blue is false). Logs details about swerve operation, and reads the swerve file for data about physical components like
-    // moters and encoders. turns off heading corrections bacause it is mainly for autonomous. cosine compensator set to false but should
-    // be changed when running outside of simmulator. angular velocity compensation for smoother direction changes. auto syncronize turned
+    // Use: This function configures the subsystem. It configures it's starting pose
+    // based on which allience it is on (set to red alliance by
+    // default because blue is false). Logs details about swerve operation, and
+    // reads the swerve file for data about physical components like
+    // moters and encoders. turns off heading corrections bacause it is mainly for
+    // autonomous. cosine compensator set to false but should
+    // be changed when running outside of simmulator. angular velocity compensation
+    // for smoother direction changes. auto syncronize turned
     // off (may need to turn back on later to compensate for drift).
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -83,8 +87,10 @@ public class SwerveBase implements Subsystem {
     //
     // Function: drive
     //
-    // Use: taking driver inputs and making them into movements in the moters. solves what speed and velocity are needed for each of the four
-    // wheels Than it takes the angles speed and velocity and gives the commands to the motors. IsOpenLoop tells motors to try to get to the 
+    // Use: taking driver inputs and making them into movements in the moters.
+    // solves what speed and velocity are needed for each of the four
+    // wheels Than it takes the angles speed and velocity and gives the commands to
+    // the motors. IsOpenLoop tells motors to try to get to the
     // right velocity but is turned off.
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -120,17 +126,9 @@ public class SwerveBase implements Subsystem {
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //
+    // Function: drive
     //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
+    // Use: Control velocity in autonomous and teleop.
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /**
@@ -144,17 +142,11 @@ public class SwerveBase implements Subsystem {
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //
+    // Function: getKinematics
     //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
+    // Use: Gets geometry of the robot. Takes velocity of all four moters. Takes
+    // actual velocity of moters. Tracks position on feild based on
+    // moter movements. can be used for autonomous.
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /**
@@ -168,17 +160,10 @@ public class SwerveBase implements Subsystem {
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //
+    // Function: resetOdometry
     //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
+    // Use: Reads position changes of robot continuosly. Usefull for autonomous and
+    // corrections of drift.
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /**
@@ -196,17 +181,10 @@ public class SwerveBase implements Subsystem {
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //
+    // Function: getPose
     //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
+    // Use: Gets position based on change from the starting point. For autonomous
+    // and driver assistance.
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /**
@@ -221,17 +199,9 @@ public class SwerveBase implements Subsystem {
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //
+    // Function: setChassisSpeeds
     //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
+    // Use: Takes the speed we want to send to be calculated into movements.
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /**
