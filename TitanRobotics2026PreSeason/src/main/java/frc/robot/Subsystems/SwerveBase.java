@@ -22,6 +22,7 @@ import swervelib.parser.SwerveDriveConfiguration;
 import swervelib.parser.SwerveParser;
 import swervelib.telemetry.SwerveDriveTelemetry;
 import swervelib.telemetry.SwerveDriveTelemetry.TelemetryVerbosity;
+import edu.wpi.first.wpilibj.smartdashboard.*;
 
 public class SwerveBase implements Subsystem {
 
@@ -633,6 +634,7 @@ public class SwerveBase implements Subsystem {
     @Override
     public void log() {
         // TODO Auto-generated method stub
+        SmartDashboard.updateValues();
         throw new UnsupportedOperationException("Unimplemented method 'log'");
     }
 
