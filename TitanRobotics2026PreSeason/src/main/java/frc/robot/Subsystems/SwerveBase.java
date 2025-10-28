@@ -25,6 +25,7 @@ import swervelib.telemetry.SwerveDriveTelemetry.TelemetryVerbosity;
 
 public class SwerveBase implements Subsystem {
 
+    private static SwerveBase instance = null;
     /**
      * Swerve drive object.
      */
@@ -45,6 +46,13 @@ public class SwerveBase implements Subsystem {
     // off (may need to turn back on later to compensate for drift).
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    public static SwerveBase getInstance() {
+        if (instance == null) {
+            instance = new SwerveBase();
+        }
+        return instance;
+    }
+    
     public SwerveBase() {
         boolean blueAlliance = false;
         Pose2d startingPose = blueAlliance ? new Pose2d(new Translation2d(Meter.of(1),
