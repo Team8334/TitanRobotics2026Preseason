@@ -36,6 +36,8 @@ public class SwerveBase implements Subsystem {
     //
     // Function: SwerveBase
     //
+    // Author: Austin :)
+    //
     // Use: This function configures the subsystem. It configures it's starting pose
     // based on which allience it is on (set to red alliance by
     // default because blue is false). Logs details about swerve operation, and
@@ -53,7 +55,7 @@ public class SwerveBase implements Subsystem {
         }
         return instance;
     }
-    
+
     public SwerveBase() {
         boolean blueAlliance = false;
         Pose2d startingPose = blueAlliance ? new Pose2d(new Translation2d(Meter.of(1),
@@ -96,6 +98,8 @@ public class SwerveBase implements Subsystem {
     //
     // Function: drive
     //
+    // Author: Austin :)
+    //
     // Use: taking driver inputs and making them into movements in the moters.
     // solves what speed and velocity are needed for each of the four
     // wheels Than it takes the angles speed and velocity and gives the commands to
@@ -137,6 +141,8 @@ public class SwerveBase implements Subsystem {
     //
     // Function: drive
     //
+    // Author: Austin :)
+    //
     // Use: Control velocity in autonomous and teleop.
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -152,6 +158,8 @@ public class SwerveBase implements Subsystem {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //
     // Function: getKinematics
+    //
+    // Author: Austin :)
     //
     // Use: Gets geometry of the robot. Takes velocity of all four moters. Takes
     // actual velocity of moters. Tracks position on feild based on
@@ -170,6 +178,8 @@ public class SwerveBase implements Subsystem {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //
     // Function: resetOdometry
+    //
+    // Author: Austin :)
     //
     // Use: Reads position changes of robot continuosly. Usefull for autonomous and
     // corrections of drift.
@@ -192,6 +202,8 @@ public class SwerveBase implements Subsystem {
     //
     // Function: getPose
     //
+    // Author: Austin :)
+    //
     // Use: Gets position based on change from the starting point. For autonomous
     // and driver assistance.
     //
@@ -210,6 +222,8 @@ public class SwerveBase implements Subsystem {
     //
     // Function: setChassisSpeeds
     //
+    // Author: Austin :)
+    //
     // Use: Takes the speed we want to send to be calculated into movements.
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -225,6 +239,8 @@ public class SwerveBase implements Subsystem {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //
     // Function: postTrajectory
+    //
+    // Author: Austin :)
     //
     // Use: collects the trajectory information and sends it to be processed in the
     // driver station software. Driver station visualizes trajectory.
@@ -246,6 +262,8 @@ public class SwerveBase implements Subsystem {
     //
     // Function: zeroGyro
     //
+    // Author: Austin :)
+    //
     // Use: Resets the Gyro and the Odometry to zero so they are the same.
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -260,6 +278,8 @@ public class SwerveBase implements Subsystem {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //
     // Function: isRedAlliance
+    //
+    // Author: Austin :)
     //
     // Use: Checks if the alliance is red or not. If not specified red is false.
     //
@@ -278,6 +298,8 @@ public class SwerveBase implements Subsystem {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //
     // Function: zeroGyroWithAlliance
+    //
+    // Author: Austin :)
     //
     // Use: makes the robot zero for whatever alliance it is on.
     //
@@ -302,6 +324,8 @@ public class SwerveBase implements Subsystem {
     //
     // Function: setMotorBrake
     //
+    // Author: Austin :)
+    //
     // Use: Brake mode (true) makes motors stop completely and "lock up". Coast mode
     // (false) makes motors roll with no power but not lock. Brake is used primarily
     // for auto for predictable movements. Coast is for teleop for driver
@@ -320,6 +344,8 @@ public class SwerveBase implements Subsystem {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //
     // Function: getHeading
+    //
+    // Author: Austin :)
     //
     // Use: find the rotation and tell which direction the robot is facing. for auto
     //
@@ -340,15 +366,14 @@ public class SwerveBase implements Subsystem {
     //
     // Function: getTargetSpeeds
     //
-    // Use: 
+    // Author: Austin :)
     //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
+    // Use: This function resets the robot's internal localization (odometry) by
+    // forcing its current estimated position (Pose2d which includes X,Y, and
+    // heading θ) to the exact pose provided. It is critically used to initialize
+    // the robot's position and orientation before an Autonomous match starts, or to
+    // immediately correct the robot's pose mid-match based on accurate feedback
+    // from a vision system or AprilTag detection.
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /**
@@ -374,17 +399,16 @@ public class SwerveBase implements Subsystem {
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //
+    // Function: getTargetSpeeds
     //
+    // Author: Austin :)
     //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
+    // Use: This function defines an alternative Field-Centric control mode for the
+    // robot, taking linear velocity inputs ($\text{X}$ and $\text{Y}$) and an
+    // explicit target angle ($\text{Rotation2d}$). It primarily translates the
+    // driver's scaled movement command while calculating the angular velocity
+    // needed to turn the robot from its current heading toward the commanded fixed
+    // angle.
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /**
@@ -409,17 +433,15 @@ public class SwerveBase implements Subsystem {
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //
+    // Function: getFieldVelocity
     //
+    // Author: Austin :)
     //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
+    // Use: This function retrieves the robot's current motion as a Field-Relative
+    // velocity vector, encapsulated in a ChassisSpeeds object. This velocity is
+    // relative to the field's coordinate system (e.g., V x
+    // is velocity along the field's X-axis, not the robot's nose), providing
+    // crucial feedback for closed-loop control and logging.
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /**
@@ -433,17 +455,15 @@ public class SwerveBase implements Subsystem {
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //
+    // Function: getRobotVelocity
     //
+    // Author: Austin :)
     //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
+    // Use: This function retrieves the robot's current motion as a ChassisSpeeds
+    // object, representing its velocity relative to its own frame of reference
+    // (Robot-Relative). It reports the instantaneous forward/backward (V x),
+    // sideways (V y), and angular (ω) speeds, providing the raw movement data used
+    // for debugging and low-level control.
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /**
@@ -457,17 +477,16 @@ public class SwerveBase implements Subsystem {
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //
+    // Function: getSwerveController
     //
+    // Author: Austin :)
     //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
+    // Use: This function provides direct access to the robot's SwerveController
+    // object, which is the high-level brain responsible for calculating the precise
+    // commands for all swerve modules. By returning this controller, it allows
+    // other subsystems or control loops (like an autonomous path follower) to
+    // interact directly with the drive logic or retrieve its complex state
+    // information.
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /**
@@ -481,17 +500,16 @@ public class SwerveBase implements Subsystem {
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //
+    // Function: getSwerveDriveConfiguration
     //
+    // Author: Austin :)
     //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
+    // Use: This function serves as an accessor to retrieve the
+    // SwerveDriveConfiguration object, which holds all the critical, unchanging
+    // physical parameters of the robot's drive base. This configuration includes
+    // essential data like wheel base width, track width, gear ratios, wheel
+    // circumference, and motor ID assignments, enabling all other drive logic to
+    // function correctly.
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /**
@@ -505,17 +523,16 @@ public class SwerveBase implements Subsystem {
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //
+    // Function: lock
     //
+    // Author: Austin :)
     //
+    // Use: This function provides a critical safety and control feature for an FRC
+    // swerve drive, commanding all four swerve modules to enter "X-lock" mode.
     //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
+    // This mode sets the angles of the four modules to form a stationary 'X' shape
+    // relative to the robot's center, which passively resists external forces and
+    // prevents the robot from being pushed or rolling.
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /**
@@ -527,17 +544,15 @@ public class SwerveBase implements Subsystem {
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //
+    // Function: getPitch
     //
+    // Author: Austin :)
     //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
+    // Use: This function retrieves the robot's current Pitch angle directly from
+    // the Inertial Measurement Unit (IMU). This angle represents the rotation
+    // around the robot's lateral axis (side-to-side) and is critical for detecting
+    // when the robot is climbing, descending, or tipping over, which is essential
+    // for balance control and preventing fouls.
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /**
@@ -551,17 +566,18 @@ public class SwerveBase implements Subsystem {
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //
+    // Function: addFakeVisionReading
     //
+    // Author: Austin :)
     //
+    // Use: This function is a utility designed specifically for debugging and
+    // testing the robot's localization system, rather than for actual match play.
     //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
+    // It manually injects a fake vision measurement into the pose estimator,
+    // telling the robot's software that its position has been accurately confirmed
+    // as X=3 meters, Y=3 meters, and heading θ=65∘ at the current time. This allows
+    // programmers to test how their robot's odometry reacts to corrections without
+    // needing a physical camera or field setup.
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /**
@@ -573,17 +589,15 @@ public class SwerveBase implements Subsystem {
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //
+    // Function: getSwerveDrive
     //
+    // Author: Austin :)
     //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
+    // Use: This function serves as a basic accessor to retrieve the SwerveDrive
+    // object itself, which is the main, encompassing object representing the entire
+    // physical drive base and its core control logic. Returning this object grants
+    // full access to all low-level functions, motors, sensors, and configuration
+    // within the drivetrain system.
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /**
@@ -597,17 +611,15 @@ public class SwerveBase implements Subsystem {
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //
+    // Function: driveFieldOriented
     //
+    // Author: Austin :)
     //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
+    // Use: This function commands the FRC Swerve Drive robot to move using a
+    // ChassisSpeeds object that is interpreted relative to the Field's coordinate
+    // system. It allows the robot to drive consistently along the field's axes
+    // (e.g., straight toward the opponent's alliance wall) regardless of the
+    // direction the robot's chassis is facing.
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /**
