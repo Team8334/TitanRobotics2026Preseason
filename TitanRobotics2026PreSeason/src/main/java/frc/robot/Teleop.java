@@ -41,12 +41,12 @@ public class Teleop {
         boolean isFieldOrriented = false;
 
         if (Math.abs(controllerLeftY) >= 0.1) {
-            forward = (controllerLeftY);
+            forward = -(controllerLeftY);
         } else {
             forward = 0;
         }
         if (Math.abs(controllerLeftX) >= 0.1) {
-            strafe = (controllerLeftX);
+            strafe = -(controllerLeftX);
         } else {
             strafe = 0;
         }
