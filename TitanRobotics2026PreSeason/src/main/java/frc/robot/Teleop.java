@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.Subsystems.SwerveBase;
 import frc.robot.Data.PortMap;
+import frc.robot.Data.Constants;
 
 public class Teleop {
 
@@ -41,29 +42,19 @@ public class Teleop {
         boolean isFieldOrriented = false;
 
         if (Math.abs(controllerLeftY) >= 0.1) {
-            forward = -(controllerLeftY);
+            forward = -(controllerLeftY) * Constants.MAX_SPEED;
         } else {
             forward = 0;
         }
         if (Math.abs(controllerLeftX) >= 0.1) {
-            strafe = -(controllerLeftX);
+            strafe = -(controllerLeftX) * Constants.MAX_SPEED;
         } else {
             strafe = 0;
         }
-        /*if (Math.abs(controllerRightX) >= 0.1) {
-            rotation = (controllerRightX);
+        if (Math.abs(controllerRightX) >= 0.1) {
+            rotation = -(controllerRightX) * Constants.MAX_ROTATIONS;
         } else {
             rotation = 0;
-        }*/
-
-        if(controllerRightBumper && isFieldOrriented == true)
-        {
-            isFieldOrriented = false;
-        }
-
-        if(controllerRightBumper && isFieldOrriented == false)
-        {
-            isFieldOrriented = true;
         }
 
         if(isFieldOrriented) //translation2d is used for lateral movement of the swerve drive
