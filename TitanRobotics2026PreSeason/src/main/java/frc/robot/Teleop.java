@@ -52,7 +52,7 @@ public class Teleop {
             strafe = 0;
         }
         if (Math.abs(controllerRightX) >= 0.1) {
-            rotation = -(controllerRightX) * Constants.MAX_ROTATIONS;
+            rotation = -((Math.abs(controllerRightX))*(controllerRightX)) * Constants.MAX_ROTATION_SPEED;
         } else {
             rotation = 0;
         }
