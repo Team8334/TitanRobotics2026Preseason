@@ -57,6 +57,7 @@ public class SwerveBase implements Subsystem {
     }
 
     public SwerveBase() {
+        SubsystemManager.registerSubsystem(this);
         boolean blueAlliance = false;
         Pose2d startingPose = blueAlliance ? new Pose2d(new Translation2d(Meter.of(1),
                 Meter.of(4)),
@@ -147,7 +148,8 @@ public class SwerveBase implements Subsystem {
     //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /**
-     * Drive according to the chassis robot oriented velocity.
+     * Drive according to the chassis robot o
+     * riented velocity.
      *
      * @param velocity Robot oriented {@link ChassisSpeeds}
      */

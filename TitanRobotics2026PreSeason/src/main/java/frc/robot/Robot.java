@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Teleop;
 import frc.robot.Subsystems.SwerveBase;
+import frc.robot.Subsystems.SubsystemManager;
 
 /**
  * The methods in this class are called automatically corresponding to each mode, as described in
@@ -35,6 +36,8 @@ public class Robot extends TimedRobot {
 
     swerveBase = SwerveBase.getInstance();
     teleop = new Teleop();
+
+    swerveBase.update();
   }
 
   /**
@@ -45,7 +48,10 @@ public class Robot extends TimedRobot {
    * SmartDashboard integrated updating.
    */
   @Override
-  public void robotPeriodic() {}
+  public void robotPeriodic() {
+
+    SubsystemManager.updateSubsystems();
+  }
 
   /**
    * This autonomous (along with the chooser code above) shows how to select between different
@@ -80,7 +86,9 @@ public class Robot extends TimedRobot {
 
   /** This function is called once when teleop is enabled. */
   @Override
-  public void teleopInit() {}
+  public void teleopInit() {
+    swerveBase.zeroGyro();
+  }
 
   /** This function is called periodically during operator control. */
   @Override
