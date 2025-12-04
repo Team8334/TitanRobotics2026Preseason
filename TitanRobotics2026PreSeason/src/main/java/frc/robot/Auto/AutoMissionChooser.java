@@ -5,8 +5,8 @@ package frc.robot.Auto;
 //import frc.robot.Auto.Missions.RedMissions.RedScoreL4;
 
 import frc.robot.Auto.SwervePath;
-
 import com.pathplanner.lib.auto.AutoBuilder;
+
 import java.util.Optional;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 
 public class AutoMissionChooser {
-    enum DesiredMission {
+    enum Command {
         //these are the options you will see in smart dashboard.
         exampleMission,
         // general missions that use alliance to determine the actual missions
@@ -31,9 +31,9 @@ public class AutoMissionChooser {
         BlueScoreL4,
     }
 
-    private DesiredMission cachedDesiredMission = DesiredMission.doNothing;
+    private Command cachedDesiredMission = Command.doNothing;
 
-    private final SendableChooser<DesiredMission> missionChooser;
+    private final SendableChooser<Command> missionChooser;
 
 
     private Optional<MissionBase> autoMission = Optional.empty();
@@ -47,9 +47,9 @@ public class AutoMissionChooser {
         missionChooser = AutoBuilder.buildAutoChooser();
 
         // add more here as needed, is what is seen when choosing a mission
-        missionChooser.addOption("Do Nothing", DesiredMission.doNothing);
-        missionChooser.addOption("Leave Community", DesiredMission.MoveAcrossLineMission);
-        missionChooser.addOption("Scoring L4", DesiredMission.ScoringL4Mission);
+        missionChooser.addOption("Do Nothing", Command.doNothing);
+        missionChooser.addOption("Leave Community", Command.MoveAcrossLineMission);
+        missionChooser.addOption("Scoring L4", Command.ScoringL4Mission);
 
         SmartDashboard.putNumber("Auto Delay (seconds)", 0);
 
@@ -73,10 +73,11 @@ public class AutoMissionChooser {
             
         }
         delay = SmartDashboard.getNumber("Auto Delay", 0);
-        DesiredMission desiredMission = missionChooser.getSelected();
+        
+        Command desiredMission = missionChooser.getSelected();
 
         if (desiredMission == null) {
-            desiredMission = DesiredMission.doNothing;
+            desiredMission = Command.doNothing;
         }
 
         if (cachedDesiredMission != desiredMission) {
@@ -86,7 +87,7 @@ public class AutoMissionChooser {
         cachedDesiredMission = desiredMission;
     }
 
-    private Optional<MissionBase> getAutoMissionForParams(DesiredMission mission) {
+    private Optional<MissionBase> getAutoMissionForParams(Command mission) {
         switch (mission) {
             // do nothing mission
             case doNothing:
@@ -108,7 +109,7 @@ public class AutoMissionChooser {
 
     public void reset() {
         autoMission = Optional.empty();
-        cachedDesiredMission = DesiredMission.doNothing;
+        cachedDesiredMission = Command.doNothing;
     }
 
     public void outputToSmartDashboard() {

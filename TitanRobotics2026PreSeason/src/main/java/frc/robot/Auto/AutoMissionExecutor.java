@@ -1,5 +1,3 @@
-
-
 package frc.robot.Auto;
 
 import frc.robot.Auto.MissionBase;
