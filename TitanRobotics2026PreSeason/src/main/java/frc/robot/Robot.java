@@ -5,6 +5,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Teleop;
@@ -21,6 +22,7 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
+  private final Field2d m_field = new Field2d();
 
   Teleop teleop;
   SwerveBase swerveBase;
@@ -36,8 +38,6 @@ public class Robot extends TimedRobot {
 
     swerveBase = SwerveBase.getInstance();
     teleop = new Teleop();
-
-    swerveBase.update();
   }
 
   /**
@@ -49,6 +49,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    swerveBase.update();
+    m_field.setRobotPose(swerveBase.getPose());
 
     SubsystemManager.updateSubsystems();
   }
