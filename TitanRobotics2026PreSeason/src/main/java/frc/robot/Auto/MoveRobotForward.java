@@ -16,64 +16,63 @@ import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj.Timer;
 import frc.robot.Subsystems.SwerveBase;
 import frc.robot.Interface.AutoActions;
+import frc.robot.Subsystems.AutoDrive;
 
 public class MoveRobotForward implements AutoActions{
     Trajectory trajectory;
     HolonomicDriveController controller;
     SwerveBase swerveBase;
     Timer timer;
+    AutoDrive autoDrive;
 
 
     public MoveRobotForward(){
         swerveBase = SwerveBase.getInstance();
             
-        controller = new HolonomicDriveController(
+        /*controller = new HolonomicDriveController(
         new PIDController(1, 0, 0), new PIDController(1, 0, 0),
         new ProfiledPIDController(1, 0, 0,
         new TrapezoidProfile.Constraints(6.28, 3.14)));
-
-        var sideStart = new Pose2d(1.54,23.23, Rotation2d.fromDegrees(-180));
+*/     // private final PIDController xController = new PIDController(10.0, 0.0, 0.0);
+        //private final PIDController yController = new PIDController(10.0, 0.0, 0.0);
+        final PIDController headingController = new PIDController(7.5,0.0,0.0);
+        
+        headingController.enableContinuousInput(-Math.PI, Math.PI);
+        /*var sideStart = new Pose2d(1.54,23.23, Rotation2d.fromDegrees(-180));
         var crossScale = new Pose2d(0, 5, Rotation2d.fromDegrees(-160));
+
+        new TrapezoidProfile.Constraints(6.28, 3.14);
 
         trajectory = TrajectoryGenerator.generateTrajectory(
         sideStart,
          //interiorWaypoints,
         null, crossScale, null);
         //config);
-
+*/
     }
 
     @Override
     public void start() {
-        timer = new Timer();
-        timer.start();
-            }
+        //timer = new Timer();
+        //timer.start();
+    }
     
     
     public void update() {
-
-        Pose2d currentRobotPose = swerveBase.getPose();
-        
-        Trajectory.State goal = trajectory.sample(3.4);
-        // Get the adjusted speeds. Here, we want the robot to be facing
-        // 70 degrees (in the field-relative coordinate system).
-        ChassisSpeeds adjustedSpeeds = controller.calculate(
-            currentRobotPose, goal, Rotation2d.fromDegrees(70.0));
-            swerveBase.drive(adjustedSpeeds);
+        autoDrive.followTrajectory();//what is swerve sample?
     }
 
-
     @Override
-    public boolean isFinished() {
-        return timer.get() >= seconds;
+    public boolean isFinished(){
+        return true;
+        //return timer.get() >= seconds;
     }
 
     @Override
     public void done() {
-        timer.stop();
-        swerveBase.drive(0, 0, 0);
+        //timer.stop();
+        //mDrive.driveWithSpeed(0, 0, 0);
     }
-
 
 
     /*
