@@ -35,9 +35,9 @@ public class MoveRobotForward implements AutoActions{
         new TrapezoidProfile.Constraints(6.28, 3.14)));
 */     // private final PIDController xController = new PIDController(10.0, 0.0, 0.0);
         //private final PIDController yController = new PIDController(10.0, 0.0, 0.0);
-        final PIDController headingController = new PIDController(7.5,0.0,0.0);
+        //final PIDController headingController = new PIDController(7.5,0.0,0.0);
         
-        headingController.enableContinuousInput(-Math.PI, Math.PI);
+        //headingController.enableContinuousInput(-Math.PI, Math.PI);
         /*var sideStart = new Pose2d(1.54,23.23, Rotation2d.fromDegrees(-180));
         var crossScale = new Pose2d(0, 5, Rotation2d.fromDegrees(-160));
 
